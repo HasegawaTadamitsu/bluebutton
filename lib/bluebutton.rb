@@ -71,7 +71,7 @@ class Finder
 
   def from_sys
     finded = Dir.glob("/sys/**/name").select do |file|
-      File.read(file).downcase[@name.downcase]
+      File.read(file).downcase.chomp[@name.downcase]
     end.first
 
     raise "Can't find device info '#{@name}' in /sys/**/*" if finded.nil?
